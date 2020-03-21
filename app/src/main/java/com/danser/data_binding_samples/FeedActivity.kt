@@ -46,7 +46,7 @@ class FeedActivity : AppCompatActivity() {
     }
 
     private fun getDiffAdapter(): DiffUtilCompositeAdapter = DiffUtilCompositeAdapter.Builder()
-        .add(OfferAdapter(presentation::onOfferClicked))
+        .add(OfferAdapter(this, presentation::onOfferClicked))
         .add(AdvertAdapter(presentation::onHideAdvertClicked))
         .add(DividerAdapter)
         .build()

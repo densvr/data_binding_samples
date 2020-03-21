@@ -1,29 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/vRoot"
-    android:background="@android:color/white"
-    android:padding="8dp">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/tvTitle"
+    <data>
+        <variable
+            name="offer"
+            type="com.danser.data_binding_samples.view.adapter.OfferViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/vRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:ellipsize="end"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        tools:text="Продаю зубные щетки"/>
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:padding="8dp">
 
-    <TextView
-        android:id="@+id/tvText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="3"
-        android:ellipsize="end"
-        tools:text="Зубные щетки очень хорошие\n и почти новые"/>
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{offer.title, default=Загрузка}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:text="Продаю зубные щетки" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:text="@{offer.text}"
+            tools:text="Зубные щетки очень хорошие\n и почти новые" />
+
+        <TextView
+            android:id="@+id/tvPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{offer.price}"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            tools:text="999 Р" />
+
+    </LinearLayout>
+
+</layout>
