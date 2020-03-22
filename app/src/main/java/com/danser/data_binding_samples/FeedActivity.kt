@@ -24,6 +24,8 @@ class FeedActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed)
 
+        setSupportActionBar(vToolbar)
+
         initPresentationModel()
         bindRecycler()
     }
