@@ -1,18 +1,18 @@
 package com.danser.data_binding_samples
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.danser.data_binding_samples.domain.FeedInteractor
+import com.danser.data_binding_samples.databinding.ActivityFeedBinding
 import com.danser.data_binding_samples.presentation.FeedPresentationModel
 import com.danser.data_binding_samples.presentation.FeedViewModel
 import com.danser.data_binding_samples.view.adapter.AdvertAdapter
 import com.danser.data_binding_samples.view.adapter.DividerAdapter
 import com.danser.data_binding_samples.view.adapter.OfferAdapter
 import com.example.delegateadapter.delegate.diff.DiffUtilCompositeAdapter
-import kotlinx.android.synthetic.main.activity_feed.*
 
 class FeedActivity : AppCompatActivity() {
 
@@ -20,11 +20,13 @@ class FeedActivity : AppCompatActivity() {
 
     private val adapter: DiffUtilCompositeAdapter by lazy { getDiffAdapter() }
 
+    private lateinit var binding: ActivityFeedBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_feed)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_feed)
 
-        setSupportActionBar(vToolbar)
+        setSupportActionBar(binding.vToolbar)
 
         initPresentationModel()
         bindRecycler()
@@ -36,11 +38,14 @@ class FeedActivity : AppCompatActivity() {
         presentation.modelLiveData.observe(this, Observer { model: FeedViewModel ->
             update(model)
         })
+
+        binding.shownOffersCount = presentation.shownOfferCount
+
     }
 
     private fun bindRecycler() {
-        rvList.adapter = adapter
-        rvList.layoutManager = LinearLayoutManager(this)
+        binding.rvList.adapter = adapter
+        binding.rvList.layoutManager = LinearLayoutManager(this)
     }
 
     private fun update(model: FeedViewModel) {

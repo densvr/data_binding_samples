@@ -26,10 +26,6 @@ class OfferAdapter(
         return binding.vRoot
     }
 
-    fun onClick(view: View) {
-
-    }
-
     override fun onBind(item: OfferViewModel, viewHolder: BindingViewHolder) {
         binding.offer = item
         binding.adapter = this

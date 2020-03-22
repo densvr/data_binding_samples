@@ -1,5 +1,6 @@
 package com.danser.data_binding_samples.presentation
 
+import androidx.databinding.ObservableInt
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.danser.data_binding_samples.domain.FeedInteractor
@@ -15,6 +16,8 @@ class FeedPresentationModel(
         MutableLiveData<FeedViewModel>()
     }
 
+    val shownOfferCount = ObservableInt()
+
     private var model: Model
 
     init {
@@ -23,7 +26,7 @@ class FeedPresentationModel(
     }
 
     fun onOfferClicked(offer: FeedItem.Offer) {
-        //TODO
+        shownOfferCount.set(shownOfferCount.get() + 1)
     }
 
     fun onHideAdvertClicked(advert: FeedItem.Advert) {
