@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">data_binding_samples</string>
+    <string name="price">%s Р</string>
 </resources>

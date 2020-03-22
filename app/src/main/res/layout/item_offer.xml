@@ -6,6 +6,9 @@
         <variable
             name="offer"
             type="com.danser.data_binding_samples.view.adapter.OfferViewModel" />
+        <variable
+            name="adapter"
+            type="com.danser.data_binding_samples.view.adapter.OfferAdapter" />
     </data>
 
     <LinearLayout
@@ -13,39 +16,40 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
+        android:onClick="@{adapter::onClick}"
         android:orientation="vertical"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/tvTitle"
+            tools:text="Продаю зубные щетки"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{offer.title, default=Загрузка}"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="Продаю зубные щетки" />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tvText"
+            tools:text="Зубные щетки очень хорошие\n и почти новые"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="@{offer.text}"
-            tools:text="Зубные щетки очень хорошие\n и почти новые" />
+            android:text="@{offer.text}" />
 
         <TextView
             android:id="@+id/tvPrice"
+            tools:text="999 Р"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{offer.price}"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
-            tools:text="999 Р" />
+            android:textSize="16sp" />
 
     </LinearLayout>
 
