@@ -1,19 +1,27 @@
 package com.danser.data_binding_samples.view.adapter
 
-import com.danser.data_binding_samples.R
+import android.view.View
+import android.view.ViewGroup
+import com.danser.data_binding_samples.databinding.ItemAdvertBinding
 import com.danser.data_binding_samples.domain.FeedItem
-import com.example.delegateadapter.delegate.KDelegateAdapter
+import com.danser.data_binding_samples.utils.layoutInflater
 import com.example.delegateadapter.delegate.diff.IComparableItem
-import kotlinx.android.synthetic.main.item_advert.*
 
 class AdvertAdapter(
-    private val onHideClick: (FeedItem.Advert) -> Unit
-) : KDelegateAdapter<AdvertViewModel>() {
+    val onHideClick: (FeedItem.Advert) -> Unit
+) : BindingDelegateAdapter<AdvertViewModel>() {
 
-    override fun getLayoutId(): Int = R.layout.item_advert
+    private lateinit var binding: ItemAdvertBinding
 
-    override fun onBind(item: AdvertViewModel, viewHolder: KViewHolder) = with(viewHolder) {
-        bHide.setOnClickListener { onHideClick(item.payload) }
+    override fun createView(parent: ViewGroup): View {
+        binding = ItemAdvertBinding.inflate(parent.layoutInflater, parent, false)
+        binding.adapter = this
+        return binding.vRoot
+    }
+
+    override fun onBind(item: AdvertViewModel, viewHolder: BindingViewHolder) {
+        binding.advert = item
+        binding.executePendingBindings()
     }
 
     override fun isForViewType(items: MutableList<*>, position: Int): Boolean =

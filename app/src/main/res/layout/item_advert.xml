@@ -1,40 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/vRoot"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:orientation="horizontal"
-    android:paddingLeft="8dp"
-    android:paddingRight="8dp"
-    android:paddingTop="24dp"
-    android:background="@android:color/holo_orange_light"
-    android:paddingBottom="24dp">
+<layout>
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="0dp"
+    <data>
+
+        <variable
+            name="advert"
+            type="com.danser.data_binding_samples.view.adapter.AdvertViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.danser.data_binding_samples.view.adapter.AdvertAdapter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/vRoot"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="4"
-        android:text="Здесь может быть ваша реклама!"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/bHide"/>
+        android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="8dp"
+        android:paddingTop="24dp"
+        android:paddingRight="8dp"
+        android:paddingBottom="24dp">
 
-    <Button
-        android:id="@+id/bHide"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Скрыть"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:text="Здесь может быть\nваша реклама!"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/bHide"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Скрыть"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:onClick="@{() -> adapter.onHideClick.invoke(advert.payload)}"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -6,7 +6,8 @@ sealed class FeedItem(open val id: String) {
         override val id: String,
         val title: String,
         val price: Int,
-        val text: String
+        val text: String,
+        val imageUrl: String
     ) : FeedItem(id)
 
     data class Advert(

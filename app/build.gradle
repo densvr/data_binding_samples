@@ -37,6 +37,7 @@ dependencies {
     implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.github.liverm0r:delegateadapters:v2.03'
 
+    implementation 'com.squareup.picasso:picasso:2.71828'
     def lifecycle_version = "2.1.0"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 

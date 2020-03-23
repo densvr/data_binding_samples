@@ -22,19 +22,22 @@ class OffersRepository : IOffersRepository {
             id = "0",
             title = "Audi A5б 2017",
             text = "Машина в идеальном состоянии",
-            price = 30000000
+            price = 30000000,
+            imageUrl = "https://cdn.iconscout.com/icon/free/png-512/audi-6-282743.png"
         )
         private val BMW = FeedItem.Offer(
             id = "0",
             title = "BMW X6, 2019",
             text = "Машина только что из салона",
-            price = 400000
+            price = 400000,
+            imageUrl = "https://cdn0.iconfinder.com/data/icons/car-brands/550/BMW_logo-512.png"
         )
         private val LADA = FeedItem.Offer(
             id = "0",
             title = "Лада ВАЗ, 1999",
             text = "Гроб на колесах",
-            price = 20000
+            price = 20000,
+            imageUrl = "https://static.thenounproject.com/png/244193-200.png"
         )
     }
 }

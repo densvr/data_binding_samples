@@ -3,15 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="offer"
             type="com.danser.data_binding_samples.view.adapter.OfferViewModel" />
+
         <variable
             name="adapter"
             type="com.danser.data_binding_samples.view.adapter.OfferAdapter" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/vRoot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,35 +24,51 @@
 
         <TextView
             android:id="@+id/tvTitle"
-            tools:text="Продаю зубные щетки"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{offer.title, default=Загрузка}"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Продаю зубные щетки" />
 
         <TextView
             android:id="@+id/tvText"
-            tools:text="Зубные щетки очень хорошие\n и почти новые"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="3"
-            android:text="@{offer.text}" />
+            android:text="@{offer.text}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            tools:text="Зубные щетки очень хорошие\n и почти новые" />
 
         <TextView
             android:id="@+id/tvPrice"
-            tools:text="999 Р"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@{offer.price}"
             android:textColor="@android:color/black"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvText"
+            tools:text="999 Р" />
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/vImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:placeholder="@{@drawable/ic_launcher_background}"
+            app:imageUrl="@{offer.imageUrl}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

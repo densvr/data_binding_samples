@@ -8,27 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.danser.data_binding_samples.databinding.ItemOfferBinding
 import com.danser.data_binding_samples.domain.FeedItem
+import com.danser.data_binding_samples.utils.layoutInflater
 import com.example.delegateadapter.delegate.diff.IComparableItem
 
 class OfferAdapter(
-    private val context: Context,
     val onClick: (payload: FeedItem.Offer) -> Unit
 ) : BindingDelegateAdapter<OfferViewModel>() {
 
     private lateinit var binding: ItemOfferBinding
 
     override fun createView(parent: ViewGroup): View {
-        binding = ItemOfferBinding.inflate(
-            context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-            parent,
-            false
-        )
+        binding = ItemOfferBinding.inflate(parent.layoutInflater, parent, false)
+        binding.adapter = this
         return binding.vRoot
     }
 
     override fun onBind(item: OfferViewModel, viewHolder: BindingViewHolder) {
         binding.offer = item
-        binding.adapter = this
+
+        binding.executePendingBindings()
     }
 
     override fun isForViewType(items: MutableList<*>, position: Int): Boolean =
@@ -39,6 +37,7 @@ data class OfferViewModel(
     val title: String,
     val price: String,
     val text: String,
+    val imageUrl: String,
     val payload: FeedItem.Offer
 ) : IComparableItem {
 

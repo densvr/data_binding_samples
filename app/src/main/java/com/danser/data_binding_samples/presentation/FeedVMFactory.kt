@@ -27,6 +27,7 @@ class FeedVMFactory {
         title = title,
         price = decimalFormat.format(price) + " Р",
         text = text,
+        imageUrl = imageUrl,
         payload = this
     )
 
